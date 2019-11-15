@@ -2,6 +2,7 @@ from sqlalchemy import inspect, Column, Integer, String, SmallInteger, orm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # from app.libs.error_code import NotFound, AuthFailed
+from app.libs.error_code import AuthFailed
 from app.models.base import Base, db, MixinJSONSerializer
 import datetime
 
