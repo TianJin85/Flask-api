@@ -10,6 +10,7 @@ flask = "*"
 cymysql = "*"
 wtforms = "*"
 flask-sqlalchemy = "*"
+flask-httpauth = "*"
 
 [requires]
 python_version = "3.6"

@@ -6,3 +6,11 @@
 @Email   : tianjincn@163.com
 @Software: PyCharm
 """
+from flask_httpauth import HTTPBasicAuth
+
+auth = HTTPBasicAuth()
+
+
+def verify_password(account, password):
+    # token
+    return True
