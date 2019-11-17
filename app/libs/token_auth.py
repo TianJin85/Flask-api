@@ -17,6 +17,7 @@ from app.libs.error_code import AuthFailed
 auth = HTTPBasicAuth()
 User = namedtuple('User', ['uid', 'ac_type', 'scope'])
 
+
 @auth.verify_password
 def verify_password(token, password):
     # token

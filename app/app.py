@@ -1,13 +1,23 @@
-from flask import Flask
-from app.api.v1 import create_blueprint_v1
-from app.models.base import db
+from flask import Flask as _Flask
+from flask.json import JSONEncoder as _JSONEncoder
+
+
+class JSONEncoder(_JSONEncoder):
+    def default(self, o):
+        return o.__dict__
+
+
+class Flask(_Flask):
+    json_encoder = JSONEncoder
 
 
 def register_blueprints(app):
+    from app.api.v1 import create_blueprint_v1
     app.register_blueprint(create_blueprint_v1(), url_prefix='/v1')
 
 
 def register_plugin(app):
+    from app.models.base import db
     db.init_app(app)
     with app.app_context():
         db.create_all()

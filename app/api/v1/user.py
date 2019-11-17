@@ -1,10 +1,21 @@
+from flask import jsonify
+
 from app.libs.error_code import NotFound
 from app.libs.redprint import Redprint
+
 from app.libs.token_auth import auth, User
 
 # user = Blueprint('user', __name__)
 
 api = Redprint('user')
+
+
+class QiYue(object):
+    name = 'qiyue'
+    age = 18
+
+    def __init__(self):
+        self.gender = 'male'
 
 
 @api.route('/<int:uid>', methods=['GET'])
@@ -16,7 +27,7 @@ def get_user():
     # token
     user = User.query.get_or_404()
 
-    return 'i am qiyue'
+    return jsonify(QiYue)
 
 
 @api.route('/get', methods=['POST'])
