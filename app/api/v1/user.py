@@ -1,15 +1,23 @@
+from app.libs.error_code import NotFound
 from app.libs.redprint import Redprint
-from app.libs.token_auth import auth
+from app.libs.token_auth import auth, User
+
 # user = Blueprint('user', __name__)
 
 api = Redprint('user')
 
 
-@api.route('', methods=['GET'])
+@api.route('/<int:uid>', methods=['GET'])
 @auth.login_required
 def get_user():
+    # account secret
+    # APP
+    # token 是否过期 是否合法
+    # token
+    user = User.query.get_or_404()
 
     return 'i am qiyue'
+
 
 @api.route('/get', methods=['POST'])
 def create_user():
